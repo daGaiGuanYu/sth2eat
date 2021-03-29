@@ -19,13 +19,13 @@ data.list = [
 ]
 
 page.onLoad = function(toEatId){
-  console.debug('onLoad')
+  console.log('onLoad')
   this.reset()
 }
 
 let resetting = false
 page.reset = async function(){
-  console.debug('reset')
+  console.log('reset')
   if(resetting){
     toast('急？')
     return
@@ -37,13 +37,13 @@ page.reset = async function(){
 }
 
 page.showAnswer = function(answer){
-  console.debug('showAnswer')
+  console.log('showAnswer')
   if(!answer) throw 'answer 不能为空'
   this.setData({ answer })
 }
 
 function __reset(){
-  console.debug('__reset')
+  console.log('__reset')
   const tarIndex = Math.floor(Math.random() * 4)
   const tar = this.data.list[tarIndex]
   return gfTimeout.haha(2000, [
