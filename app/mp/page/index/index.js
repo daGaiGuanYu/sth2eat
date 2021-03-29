@@ -1,4 +1,4 @@
-const { GFPage, toast } = require('../../common/index')
+const { GFPage, toast, gfTimeout } = require('../../common/index')
 
 const page = new GFPage()
 const data = page.data
@@ -18,42 +18,47 @@ data.list = [
 ]
 
 page.onLoad = function(){
+  console.debug('onLoad')
   this.reset()
 }
 
-data.resetting = false
-page.reset = function(){
-  if(data.resetting){
+let resetting = false
+page.reset = async function(){
+  console.debug('reset')
+  if(resetting){
     toast('急？')
     return
   }
 
-  data.resetting = true
-  __reset.call(this)
-  setTimeout(() => {
-    data.resetting = false
-  }, 6000)
+  resetting = true
+  await __reset.call(this)
+  resetting = false
 }
 
 page.showAnswer = function(answer){
+  console.debug('showAnswer')
   if(!answer) throw 'answer 不能为空'
   this.setData({ answer })
 }
 
 function __reset(){
+  console.debug('__reset')
   const tarIndex = Math.floor(Math.random() * 4)
   const tar = this.data.list[tarIndex]
-
-  this.showAnswer(3)
-  setTimeout(() => {
-    this.showAnswer(2)
-  }, 2000)
-  setTimeout(() => {
-    this.showAnswer(1)
-  }, 4000)
-  setTimeout(() => {
-    this.showAnswer(tar.name)
-  }, 6000)
+  return gfTimeout([
+    [0, () => {
+      this.showAnswer(3)
+    }],
+    [2000, () => {
+      this.showAnswer(2)
+    }],
+    [2000, () => {
+      this.showAnswer(1)
+    }],
+    [2000, () => {
+      this.showAnswer(tar.name)
+    }]
+  ])
 }
 
 Page(page)
