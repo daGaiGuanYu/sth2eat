@@ -5,11 +5,11 @@ const app = {
   data: {}
 }
 
-const getOpenId = api.user.getOpenId()
-  .then(openId => {
-    console.log('当前用户: ' + openId)
-    return openId
+const userinfoP = api.user.getUserinfo()
+  .then(record => {
+    console.log('当前用户: ', record)
+    return record
   })
-app.getOpenId = () => getOpenId
+app.getUserinfo = () => userinfoP
 
 App(app)
