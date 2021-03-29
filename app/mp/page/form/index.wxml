@@ -1,1 +1,10 @@
-form
+<form class="list">
+  <view wx:for="{{record.list}}" wx:key="index">
+    <input value="{{item.name}}" name="{{index}}" placeholder="请输入饭/店名" />
+  </view>
+
+  <view class="btn">
+    <button bindtap="addItem">添加菜品</button>
+    <button>提交</button>
+  </view>
+</form>

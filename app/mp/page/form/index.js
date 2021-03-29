@@ -2,13 +2,14 @@ const { GFPage, setPageTitle } = require('../../common/index')
 const Model = require('../../db-util/model')
 
 const app = getApp()
-const toEatModel = new Model('to_eat')
+const model = new Model('to_eat')
 const page = new GFPage({
   record: {
     name: '',
     list: []
   }
 })
+const data = page.data
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
@@ -17,9 +18,17 @@ page.onLoad = async function(option){
     setPageTitle('新饭单')
   } else {
     setPageTitle('编辑饭单')
-    const record = await toEatModel.getById(itemId)
+    const record = await model.getById(itemId)
     this.setData({ record })
   }
+}
+
+page.addItem = function(){
+  console.log('addItem')
+  data.record.list.push({
+    name: ''
+  })
+  this.updateState('record')
 }
 
 Page(page)
