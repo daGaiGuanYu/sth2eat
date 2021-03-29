@@ -1,5 +1,5 @@
 module.exports = class {
-  constructor(){
-    this.data = {}
+  constructor(data){
+    this.data = data || {}
   }
 }
