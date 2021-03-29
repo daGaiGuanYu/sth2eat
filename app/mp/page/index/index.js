@@ -45,19 +45,19 @@ function __reset(){
   console.debug('__reset')
   const tarIndex = Math.floor(Math.random() * 4)
   const tar = this.data.list[tarIndex]
-  return gfTimeout([
-    [0, () => {
+  return gfTimeout.haha(2000, [
+    () => {
       this.showAnswer(3)
-    }],
-    [2000, () => {
+    },
+    () => {
       this.showAnswer(2)
-    }],
-    [2000, () => {
+    },
+    () => {
       this.showAnswer(1)
-    }],
-    [2000, () => {
+    },
+    () => {
       this.showAnswer(tar.name)
-    }]
+    }
   ])
 }
 
