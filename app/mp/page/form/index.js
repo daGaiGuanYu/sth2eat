@@ -1,8 +1,8 @@
 const { GFPage, setPageTitle } = require('../../common/index')
+const Model = require('../../db-util/model')
 
 const app = getApp()
-const db = wx.database()
-const toEatModel = db.collection('to_eat')
+const toEatModel = new Model('to_eat')
 const page = new GFPage({
   record: {
     name: '',
@@ -17,7 +17,7 @@ page.onLoad = async function(option){
     setPageTitle('新饭单')
   } else {
     setPageTitle('编辑饭单')
-    const record = (await toEatModel.doc(itemId).get()).data
+    const record = await toEatModel.getById(itemId)
     this.setData({ record })
   }
 }
