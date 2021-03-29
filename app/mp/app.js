@@ -5,11 +5,11 @@ const app = {
   data: {}
 }
 
-const userinfoP = api.user.getUserinfo()
+const userRecordP = api.user.getUserRecord()
   .then(record => {
     console.log('当前用户: ', record)
     return record
   })
-app.getUserinfo = () => userinfoP
+app.getUserRecord = () => userRecordP
 
 App(app)

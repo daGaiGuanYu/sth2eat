@@ -1,6 +1,8 @@
-const { GFPage, toast, gfTimeout } = require('../../common/index')
+const { GFPage, toast, gfTimeout, nav2 } = require('../../common/index')
 
 const app = getApp()
+const db = wx.cloud.database()
+const userModel = db.collection('user')
 const page = new GFPage()
 const data = page.data
 
@@ -18,8 +20,21 @@ data.list = [
   }
 ]
 
-page.onLoad = function(toEatId){
-  console.log('onLoad')
+page.onLoad = async function(option){
+  console.log('onLoad', option)
+  let toEatId = option.toEatId
+  const userRecord = await app.getUserRecord()
+  if(toEatId)
+    await userModel.doc(userRecord._id).update({
+      data: {
+        toEatId
+      }
+    })
+  else if(userRecord.toEatId)
+    toEatId = userRecord.toEatId
+  else
+    return nav2('/page/form/index')
+
   this.reset()
 }
 

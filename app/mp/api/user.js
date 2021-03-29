@@ -1,6 +1,6 @@
 const model = wx.cloud.database().collection('user')
 
-const getUserinfo = exports.getUserinfo = async function() {
+const getUserRecord = exports.getUserRecord = async function() {
   const userList = (await model.get()).data
   if(userList.length >1)
     throw '有这么些我？'
@@ -11,6 +11,6 @@ const getUserinfo = exports.getUserinfo = async function() {
     await model.add({
       data: {}
     })
-    return await getUserinfo()
+    return await getUserRecord()
   }
 }
