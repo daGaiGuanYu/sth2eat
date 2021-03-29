@@ -1,5 +1,6 @@
 const { GFPage, toast, gfTimeout } = require('../../common/index')
 
+const app = getApp()
 const page = new GFPage()
 const data = page.data
 
@@ -17,7 +18,7 @@ data.list = [
   }
 ]
 
-page.onLoad = function(){
+page.onLoad = function(toEatId){
   console.debug('onLoad')
   this.reset()
 }
