@@ -5,8 +5,15 @@ module.exports = class {
     this.collection = db.collection(name)
   }
 
-  async getById(id){
+  async findById(id){
     return (await this.collection.doc(id).get()).data
+  }
+
+  async find(where){
+    return (await this.collection.where(where).get()).data
+  }
+  async findOne(where){
+    return (await this.find(where))[0]
   }
 
   create(data){
