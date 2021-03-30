@@ -1,6 +1,6 @@
 <form class="full-width">
   <view class="input-group">
-    <input class="row" placeholder="饭单名称输在这里" />
+    <input class="row" placeholder="饭单名称输在这里" value="{{name}}" bindinput="gfInput" data-name="name" />
   </view>
 
   <view class="input-group">
@@ -11,6 +11,6 @@
     </view>
   </view>
 
-  <button bindtap="addItem">添加菜品</button>
+  <button bindtap="addItem">添加饭/店</button>
   <button type="primary" bindtap="submit">提 交</button>
 </form>

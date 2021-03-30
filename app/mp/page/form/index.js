@@ -1,4 +1,5 @@
-const { GFPage, setPageTitle, nav2 } = require('../../common/index')
+const { GFPage, setPageTitle, nav2, toast } = require('../../common/index')
+const api = require('../../api/to-eat')
 
 const page = new GFPage({
   name: '',
@@ -48,8 +49,9 @@ page.nav2input = function(index){
   })
 }
 
-page.submit = function(){
-  const list = this.data.list
+page.submit = async function(){
+  const record = await api.create(this.data)
+  toast('添加成功')
 }
 
 function getItem(){
