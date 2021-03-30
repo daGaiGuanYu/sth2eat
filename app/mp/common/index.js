@@ -1,5 +1,5 @@
 module.exports = {
-  nav2: url => wx.navigateTo({ url }),
+  nav2: require('./nav2'),
   setPageTitle: title => wx.setNavigationBarTitle({ title }),
   GFPage: require('./page'),
   toast: require('./toast'),

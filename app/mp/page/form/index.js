@@ -1,13 +1,11 @@
-const { GFPage, setPageTitle } = require('../../common/index')
+const { GFPage, setPageTitle, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
 
 const app = getApp()
 const model = new Model('to_eat')
 const page = new GFPage({
-  record: {
-    name: '',
-    list: []
-  }
+  name: '',
+  list: []
 })
 const data = page.data
 
@@ -19,16 +17,33 @@ page.onLoad = async function(option){
   } else {
     setPageTitle('编辑饭单')
     const record = await model.getById(itemId)
-    this.setData({ record })
+    this.setData({
+      name: record.name,
+      list: record.list
+    })
   }
 }
 
 page.addItem = function(){
   console.log('addItem')
-  this.data.record.list.push({
+  this.data.list.push({
     name: ''
   })
-  this.updateData('record')
+  this.updateData('list')
+}
+
+page.nav2input = function(e){
+  const index = e.currentTarget.dataset.index
+  const item = this.data.list[index]
+  nav2('/page/common/input/index', {
+    title: '请输入饭/店名',
+    value: item.name
+  }, {
+    confirm: value => {
+      item.name = value
+      this.updateData(list)
+    }
+  })
 }
 
 Page(page)
