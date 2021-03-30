@@ -23,7 +23,7 @@ module.exports = class {
     return Promise.all(list.map( record => this.create(record) ))
   }
 
-  async update(data){
-    return this.collection.doc(data._id).update({ data })
+  async updateById(id, data){
+    return this.collection.doc(id).update({ data })
   }
 }

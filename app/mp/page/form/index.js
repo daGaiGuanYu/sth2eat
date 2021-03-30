@@ -52,8 +52,13 @@ page.nav2input = function(index){
 
 page.submit = async function(){
   const { name, list } = this.data
-  const record = await model.create({ name, list })
-  toast('添加成功')
+  const data = { name, list }
+  if(this.data.id)
+    await model.updateById(this.data.id, data)
+  else
+    await model.create(data)
+  toast('ooooook~')
+  wx.navigateBack()
 }
 
 function getItem(){

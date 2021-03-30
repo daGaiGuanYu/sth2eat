@@ -14,8 +14,7 @@ page.onLoad = async function(option){
   let gfListId = option.gfListId
   const userRecord = await app.getUserRecord()
   if(gfListId)
-    await userModel.update({
-      _id: userRecord._id,
+    await userModel.updateById(userRecord._id, {
       gfListId
     })
   else if(userRecord.gfListId)
