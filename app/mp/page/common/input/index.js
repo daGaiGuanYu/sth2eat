@@ -10,4 +10,9 @@ page.onLoad = function(){
   knife.evtmng = this.getOpenerEventChannel()
 }
 
+page.confirm = function(){
+  knife.evtmng.emit('confirm', this.data.value)
+  wx.navigateBack()
+}
+
 Page(page)

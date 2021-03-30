@@ -41,7 +41,7 @@ page.nav2input = function(e){
   }, {
     confirm: value => {
       item.name = value
-      this.updateData(list)
+      this.updateData('list')
     }
   })
 }
