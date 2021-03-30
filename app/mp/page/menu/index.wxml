@@ -1,0 +1,19 @@
+<view class="full-width">
+  <view class="row-group">
+    <view class="row label">
+      <text>我的饭单</text>
+      <text class="arrow">></text>
+    </view>
+    <view class="row label">
+      <text>历史饭单</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+
+  <view class="row-group">
+    <view class="row label">
+      <text>关于</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+</view>

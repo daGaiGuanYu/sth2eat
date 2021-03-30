@@ -1,1 +1,1 @@
-<view class="answer" bindtap="reset">{{answer}}</view>
+<view class="answer" bindtap="reset" bindlongpress="toMenu">{{answer}}</view>

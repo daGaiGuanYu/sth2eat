@@ -1,4 +1,4 @@
-const { GFPage, toast, gfTimeout, wait } = require('../../common/index')
+const { GFPage, toast, gfTimeout, wait, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
 
 const app = getApp()
@@ -55,6 +55,10 @@ page.showAnswer = function(answer){
   console.log('showAnswer')
   if(!answer) throw 'answer 不能为空'
   this.setData({ answer })
+}
+
+page.toMenu = function(){
+  nav2('/page/menu/index')
 }
 
 function __reset(){
