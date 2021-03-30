@@ -1,7 +1,10 @@
 module.exports = function(){
+  var resolve, reject
   const result = new Promise( (res, rej) => {
-    result.resolve = res
-    result.reject = rej
+    resolve = res
+    reject = rej
   })
+  result.resolve = resolve
+  result.reject = reject
   return result
 }

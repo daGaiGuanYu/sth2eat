@@ -1,9 +1,7 @@
 wx.cloud.init()
 const api = require('./api/index')
 
-const app = {
-  data: {}
-}
+const app = {}
 
 const userRecordP = api.user.getUserRecord()
   .then(record => {

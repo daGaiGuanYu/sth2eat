@@ -1,12 +1,15 @@
-const { GFPage, toast, gfTimeout } = require('../../common/index')
+const { GFPage, toast, gfTimeout, wait } = require('../../common/index')
 const Model = require('../../db-util/model')
 
 const app = getApp()
+const AppData = require('../../common/app-data')
 const userModel = new Model('user')
 const toEatApi = require('../../api/to-eat')
 const page = new GFPage()
+const knife = {}
 
 page.onLoad = async function(option){
+  knife.loadPromise = wait()
   console.log('onLoad', option)
   let toEatId = option.toEatId
   const userRecord = await app.getUserRecord()
@@ -25,7 +28,14 @@ page.onLoad = async function(option){
     name, list
   })
 
-  this.reset()
+  this.reset() // 异步，但不等待（时间太长）
+  knife.loadPromise.resolve()
+}
+
+page.onShow = async function(){
+  console.log('onShow')
+  await knife.loadPromise
+  const newToEatId = AppData.getNewToEatId()
 }
 
 let resetting = false
