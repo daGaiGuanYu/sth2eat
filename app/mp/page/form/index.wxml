@@ -1,10 +1,10 @@
 <form class="full-width">
-  <view class="input-group">
+  <view class="row-group">
     <input class="row" placeholder="饭单名称输在这里" value="{{name}}" bindinput="gfInput" data-name="name" />
   </view>
 
-  <view class="input-group">
-    <view class="input" wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="handleTapItem">
+  <view class="row-group">
+    <view class="row label" wx:for="{{list}}" wx:key="index" data-index="{{index}}" bindtap="handleTapItem">
       <text wx:if="{{item.name}}">{{item.name}}</text>
       <text wx:else class="placeholder">请输入饭/店名</text>
       <text class="arrow">></text>

@@ -14,14 +14,14 @@ page {
   background: #fff;
 }
 
-.row {
+.full-width .row {
   padding: var(--margin) 0;
 }
-.row:not(:last-child) {
+.full-width .row:not(:last-child) {
   border-bottom: var(--border);
 }
 
-.row.label {
+.full-width .row.label {
   display: flex;
   align-items: center;
   justify-content: space-between;

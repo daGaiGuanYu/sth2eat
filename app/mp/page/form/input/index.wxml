@@ -1,5 +1,7 @@
-<view class="input-group">
-  <input class="row" value="{{value}}" bindconfirm="confirm" bindinput="gfInput" data-name="value" auto-focus />
+<view class="full-width">
+  <view class="row-group">
+    <input class="row" value="{{value}}" bindconfirm="confirm" bindinput="gfInput" data-name="value" auto-focus />
+  </view>
 </view>
 
 <view class="bottom-btn-group">
