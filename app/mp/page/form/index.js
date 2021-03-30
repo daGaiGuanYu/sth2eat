@@ -57,7 +57,6 @@ page.submit = async function(){
     await model.updateById(this.data.id, data)
   else
     await model.create(data)
-  toast('ooooook~')
   wx.navigateBack()
 }
 
