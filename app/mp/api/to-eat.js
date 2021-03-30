@@ -9,5 +9,12 @@ module.exports = {
       name: data.name,
       list: result.map( record => record._id )
     })
+  },
+  async getById(id){
+    const record = await model.getById(id)
+    record.list = await Promise.all(record.list.map(
+      itemId => itemModel.getById(itemId)
+    ))
+    return record
   }
 }

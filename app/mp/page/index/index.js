@@ -1,39 +1,29 @@
-const { GFPage, toast, gfTimeout, nav2 } = require('../../common/index')
+const { GFPage, toast, gfTimeout } = require('../../common/index')
+const Model = require('../../db-util/model')
 
 const app = getApp()
-const db = wx.cloud.database()
-const userModel = db.collection('user')
+const userModel = new Model('user')
+const toEatApi = require('../../api/to-eat')
 const page = new GFPage()
-const data = page.data
-
-data.list = [
-  {
-    name: '情'
-  },{
-    name: '新'
-  },{
-    name: '面'
-  },{
-    name: '黄'
-  },{
-    name: '不吃'
-  }
-]
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
   let toEatId = option.toEatId
   const userRecord = await app.getUserRecord()
   if(toEatId)
-    await userModel.doc(userRecord._id).update({
-      data: {
-        toEatId
-      }
+    await userModel.update({
+      _id: userRecord._id,
+      toEatId
     })
   else if(userRecord.toEatId)
     toEatId = userRecord.toEatId
   else
     toEatId = 'b00064a76062b08c0c918160655643d1'
+  
+  const { name, list } = await toEatApi.getById(toEatId)
+  this.setData({
+    name, list
+  })
 
   this.reset()
 }
