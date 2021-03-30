@@ -33,7 +33,7 @@ page.onLoad = async function(option){
   else if(userRecord.toEatId)
     toEatId = userRecord.toEatId
   else
-    return nav2('/page/form/index')
+    toEatId = 'b00064a76062b08c0c918160655643d1'
 
   this.reset()
 }
