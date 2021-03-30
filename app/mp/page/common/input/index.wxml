@@ -1,3 +1,0 @@
-<input class="row" value="{{value}}" bindconfirm="confirm" bindinput="gfInput" data-name="value" auto-focus />
-
-<button class="row" type="primary" bindtap="confirm">确 定</button>

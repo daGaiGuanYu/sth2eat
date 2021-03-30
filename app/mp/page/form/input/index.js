@@ -14,5 +14,9 @@ page.confirm = function(){
   knife.evtmng.emit('confirm', this.data.value)
   wx.navigateBack()
 }
+page.drop = function(){
+  knife.evtmng.emit('drop')
+  wx.navigateBack()
+}
 
 Page(page)

@@ -35,8 +35,10 @@ input.row, .full-width .input {
 button.row, .full-width button {
   margin: calc(var(--margin) / 1.5) var(--margin);
 }
-button.row {
-  width: calc(100vw - calc(2 * var(--margin)));
+.bottom-btn-group {
   position: fixed;
   bottom: 2em;
+}
+button.row {
+  width: calc(100vw - calc(2 * var(--margin)));
 }

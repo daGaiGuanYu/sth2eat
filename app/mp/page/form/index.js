@@ -33,12 +33,16 @@ page.addItem = function(){
 page.nav2input = function(e){
   const index = e.currentTarget.dataset.index
   const item = this.data.list[index]
-  nav2('/page/common/input/index', {
+  nav2('/page/form/input/index', {
     title: '请输入饭/店名',
     value: item.name
   }, {
     confirm: value => {
       item.name = value
+      this.updateData('list')
+    },
+    drop: () => {
+      this.data.list.splice(index, 1)
       this.updateData('list')
     }
   })
