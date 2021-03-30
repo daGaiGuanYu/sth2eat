@@ -28,10 +28,14 @@ page.addItem = function(){
   console.log('addItem')
   this.data.list.push(getItem())
   this.updateData('list')
+  this.nav2input(this.data.list.length - 1)
 }
 
-page.nav2input = function(e){
-  const index = e.currentTarget.dataset.index
+page.handleTapItem = function(e){
+  return this.nav2input(e.currentTarget.dataset.index)
+}
+
+page.nav2input = function(index){
   const item = this.data.list[index]
   nav2('/page/form/input/index', {
     title: '请输入饭/店名',
