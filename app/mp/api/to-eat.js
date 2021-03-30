@@ -10,10 +10,10 @@ module.exports = {
       list: result.map( record => record._id )
     })
   },
-  async getById(id){
-    const record = await model.getById(id)
+  async findById(id){
+    const record = await model.findById(id)
     record.list = await Promise.all(record.list.map(
-      itemId => itemModel.getById(itemId)
+      itemId => itemModel.findById(itemId)
     ))
     return record
   }

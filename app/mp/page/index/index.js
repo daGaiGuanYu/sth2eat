@@ -23,7 +23,7 @@ page.onLoad = async function(option){
   else
     toEatId = 'b00064a76062b08c0c918160655643d1'
   
-  const { name, list } = await toEatApi.getById(toEatId)
+  const { name, list } = await toEatApi.findById(toEatId)
   this.setData({
     name, list
   })

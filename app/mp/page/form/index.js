@@ -13,7 +13,7 @@ page.onLoad = async function(option){
     setPageTitle('新饭单')
   } else {
     setPageTitle('编辑饭单')
-    const record = await model.getById(itemId)
+    const record = await model.findById(itemId)
     this.setData({
       name: record.name,
       list: record.list
