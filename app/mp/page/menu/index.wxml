@@ -1,13 +1,13 @@
 <view class="full-width">
   <view class="row-group">
-    <view class="row label">
+    <navigator url="/page/mng/index" class="row label" hover-class="none">
       <text>我的饭单</text>
       <text class="arrow">></text>
-    </view>
-    <view class="row label">
+    </navigator>
+    <navigator url="/page/history/index" class="row label" hover-class="none">
       <text>历史饭单</text>
       <text class="arrow">></text>
-    </view>
+    </navigator>
   </view>
 
   <view class="row-group">

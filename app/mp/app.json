@@ -3,7 +3,9 @@
     "page/index/index",
     "page/form/index",
     "page/form/input/index",
-    "page/menu/index"
+    "page/menu/index",
+    "page/mng/index",
+    "page/history/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
