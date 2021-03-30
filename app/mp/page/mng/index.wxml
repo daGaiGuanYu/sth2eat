@@ -1,2 +1,8 @@
-<!--page/mng/index.wxml-->
-<text>page/mng/index.wxml</text>
+<view class="full-width">
+  <view class="row-group">
+    <view class="row label" wx:for="{{list}}" wx:key="index" data-id="{{item._id}}" bindtap="onTapItem">
+      <text>{{item.name}}</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+</view>

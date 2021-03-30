@@ -8,12 +8,12 @@ const page = new GFPage({
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
-  const itemId = option.itemId
-  if(!itemId) {
+  const id = option.id
+  if(!id) {
     setPageTitle('新饭单')
   } else {
     setPageTitle('编辑饭单')
-    const record = await model.findById(itemId)
+    const record = await api.findById(id)
     this.setData({
       name: record.name,
       list: record.list
