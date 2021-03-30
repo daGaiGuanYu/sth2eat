@@ -4,5 +4,6 @@ module.exports = {
   GFPage: require('./page'),
   toast: require('./toast'),
   wait: require('./wait'),
-  gfTimeout: require('./gf-timeout')
+  gfTimeout: require('./gf-timeout'),
+  showActionSheet: require('./action-sheet')
 }
