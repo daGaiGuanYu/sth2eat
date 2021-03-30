@@ -1,12 +1,12 @@
 // 页面间的数据传递
 // 慎用
 
-let newToEatId = null
-exports.getNewToEatId = function(){
-  let temp = newToEatId
-  newToEatId = null
+let newGFListId = null
+exports.getNewGFListId = function(){
+  let temp = newGFListId
+  newGFListId = null
   return temp
 }
-exports.setNewToEatId = function(id){
-  newToEatId = id
+exports.setNewGFListId = function(id){
+  newGFListId = id
 }

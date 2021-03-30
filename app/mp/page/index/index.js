@@ -4,26 +4,26 @@ const Model = require('../../db-util/model')
 const app = getApp()
 const AppData = require('../../common/app-data')
 const userModel = new Model('user')
-const toEatModel = new Model('to_eat')
+const gfListModel = new Model('list')
 const page = new GFPage()
 const knife = {}
 
 page.onLoad = async function(option){
   knife.loadPromise = wait()
   console.log('onLoad', option)
-  let toEatId = option.toEatId
+  let gfListId = option.gfListId
   const userRecord = await app.getUserRecord()
-  if(toEatId)
+  if(gfListId)
     await userModel.update({
       _id: userRecord._id,
-      toEatId
+      gfListId
     })
-  else if(userRecord.toEatId)
-    toEatId = userRecord.toEatId
+  else if(userRecord.gfListId)
+    gfListId = userRecord.gfListId
   else
-    toEatId = 'b00064a76062ec180c9b32c8349b64de'
+    gfListId = 'b00064a76062ec180c9b32c8349b64de'
   
-  const { name, list } = await toEatModel.findById(toEatId)
+  const { name, list } = await gfListModel.findById(gfListId)
   this.setData({
     name, list
   })
@@ -35,7 +35,7 @@ page.onLoad = async function(option){
 page.onShow = async function(){
   console.log('onShow')
   await knife.loadPromise
-  const newToEatId = AppData.getNewToEatId()
+  const newGFListId = AppData.getNewGFListId()
 }
 
 let resetting = false

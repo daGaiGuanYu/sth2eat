@@ -1,7 +1,7 @@
 const { GFPage, setPageTitle, nav2, toast } = require('../../common/index')
 const Model = require('../../db-util/model')
 
-const model = new Model('to_eat')
+const model = new Model('list')
 const page = new GFPage({
   name: '',
   list: [getItem()]

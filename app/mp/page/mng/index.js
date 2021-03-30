@@ -3,7 +3,7 @@ const Model = require('../../db-util/model')
 
 const page = new GFPage()
 const app = getApp()
-const model = new Model('to_eat')
+const model = new Model('list')
 
 page.onLoad = async function(){
   console.log('onLoad')
