@@ -1,5 +1,6 @@
 const { GFPage, setPageTitle, nav2, toast } = require('../../common/index')
 const Model = require('../../db-util/model')
+const checkList = require('../../db-util/check-list')
 
 const model = new Model('list')
 const page = new GFPage({
@@ -36,7 +37,7 @@ page.handleTapItem = function(e){
 page.nav2input = function(index){
   const item = this.data.list[index]
   nav2('/page/form/input/index', {
-    title: '请输入饭/店名',
+    title: '请输入饭名',
     value: item.name
   }, {
     confirm: value => {
@@ -51,6 +52,13 @@ page.nav2input = function(index){
 }
 
 page.submit = async function(){
+  const err = checkList(this.data)
+  if(err){
+    if(err == -1)
+      return toast.error('还没填饭单名!')
+    else
+      return toast.error('有个饭名没填？')
+  }
   const { name, list } = this.data
   const data = { name, list }
   if(this.data.id)
