@@ -1,10 +1,7 @@
-module.exports = class {
-  constructor(data){
-    this.data = data || {}
-  }
-
-  updateState(name){
-    this.setState({
+module.exports = function(data = {}){
+  this.data = data
+  this.updateData = function(name){
+    this.setData({
       [name]: this.data[name]
     })
   }

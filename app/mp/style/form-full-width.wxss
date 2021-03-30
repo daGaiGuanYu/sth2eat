@@ -1,0 +1,31 @@
+.full-width {
+  --margin: .9em;
+  margin-bottom: 2em;
+}
+.full-width .input {
+  padding: var(--margin);
+  background: #fff;
+  border-bottom: .1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.full-width .input:first-child {
+  border-top: .1px solid #eee;
+}
+
+.full-width .placeholder {
+  color: #888;
+}
+
+.full-width .input .arrow {
+  font-size: 1.1em;
+  transform: scale(1, 1.3);
+  font-weight: 300;
+  color: #aaa;
+}
+
+.full-width button {
+  margin: calc(var(--margin) / 1.5) var(--margin);
+}

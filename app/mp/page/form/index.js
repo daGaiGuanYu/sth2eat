@@ -25,10 +25,10 @@ page.onLoad = async function(option){
 
 page.addItem = function(){
   console.log('addItem')
-  data.record.list.push({
+  this.data.record.list.push({
     name: ''
   })
-  this.updateState('record')
+  this.updateData('record')
 }
 
 Page(page)

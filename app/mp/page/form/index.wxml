@@ -1,10 +1,10 @@
-<form class="list">
-  <view wx:for="{{record.list}}" wx:key="index">
-    <input value="{{item.name}}" name="{{index}}" placeholder="请输入饭/店名" />
+<form class="full-width">
+  <view class="input" wx:for="{{record.list}}" wx:key="index">
+    <text wx:if="{{item.name}}">{{item.name}}</text>
+    <text wx:else class="placeholder">请输入饭/店名</text>
+    <text class="arrow">></text>
   </view>
 
-  <view class="btn">
-    <button bindtap="addItem">添加菜品</button>
-    <button>提交</button>
-  </view>
+  <button bindtap="addItem">添加菜品</button>
+  <button>提交</button>
 </form>
