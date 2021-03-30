@@ -4,7 +4,7 @@ const Model = require('../../db-util/model')
 const app = getApp()
 const AppData = require('../../common/app-data')
 const userModel = new Model('user')
-const toEatApi = require('../../api/to-eat')
+const toEatModel = new Model('to_eat')
 const page = new GFPage()
 const knife = {}
 
@@ -21,9 +21,9 @@ page.onLoad = async function(option){
   else if(userRecord.toEatId)
     toEatId = userRecord.toEatId
   else
-    toEatId = 'b00064a76062b08c0c918160655643d1'
+    toEatId = 'b00064a76062ec180c9b32c8349b64de'
   
-  const { name, list } = await toEatApi.findById(toEatId)
+  const { name, list } = await toEatModel.findById(toEatId)
   this.setData({
     name, list
   })

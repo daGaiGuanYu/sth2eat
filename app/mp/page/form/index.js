@@ -1,6 +1,7 @@
 const { GFPage, setPageTitle, nav2, toast } = require('../../common/index')
-const api = require('../../api/to-eat')
+const Model = require('../../db-util/model')
 
+const model = new Model('to_eat')
 const page = new GFPage({
   name: '',
   list: [getItem()]
@@ -8,12 +9,12 @@ const page = new GFPage({
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
-  const id = option.id
+  const id = this.data.id = option.id
   if(!id) {
     setPageTitle('新饭单')
   } else {
     setPageTitle('编辑饭单')
-    const record = await api.findById(id)
+    const record = await model.findById(id)
     this.setData({
       name: record.name,
       list: record.list
@@ -50,7 +51,8 @@ page.nav2input = function(index){
 }
 
 page.submit = async function(){
-  const record = await api.create(this.data)
+  const { name, list } = this.data
+  const record = await model.create({ name, list })
   toast('添加成功')
 }
 
