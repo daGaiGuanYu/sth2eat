@@ -1,24 +1,30 @@
 page {
   --margin: .9em;
 }
-.full-width {
+form.full-width {
   margin-bottom: 2em;
+  --border: .2px solid #eee;
 }
 
-input.row, .full-width .input {
-  padding: var(--margin);
+.input-group {
+  padding: 0 var(--margin);
+  border-bottom: var(--border);
+  border-top: var(--border);
+  margin-bottom: var(--margin);
   background: #fff;
 }
 
+input.row, .full-width .input {
+  padding: var(--margin) 0;
+}
+input.row:not(:last-child), .full-width .input:not(:last-child) {
+  border-bottom: var(--border);
+}
+
 .full-width .input {
-  border-bottom: .1px solid #eee;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.full-width .input:first-child {
-  border-top: .1px solid #eee;
 }
 
 .full-width .placeholder {

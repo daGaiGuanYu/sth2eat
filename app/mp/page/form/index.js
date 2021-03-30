@@ -1,13 +1,9 @@
 const { GFPage, setPageTitle, nav2 } = require('../../common/index')
-const Model = require('../../db-util/model')
 
-const app = getApp()
-const model = new Model('to_eat')
 const page = new GFPage({
   name: '',
   list: [getItem()]
 })
-const data = page.data
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
@@ -50,6 +46,10 @@ page.nav2input = function(index){
       this.updateData('list')
     }
   })
+}
+
+page.submit = function(){
+  const list = this.data.list
 }
 
 function getItem(){

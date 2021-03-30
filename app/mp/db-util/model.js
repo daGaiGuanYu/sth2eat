@@ -12,6 +12,9 @@ module.exports = class {
   create(data){
     return this.collection.add({ data })
   }
+  createBatch(list){
+    return Promise.all(list.map( record => this.create(record) ))
+  }
 
   async update(data){
     return this.collection.doc(data._id).update({ data })
