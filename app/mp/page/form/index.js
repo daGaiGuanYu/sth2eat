@@ -5,7 +5,7 @@ const app = getApp()
 const model = new Model('to_eat')
 const page = new GFPage({
   name: '',
-  list: []
+  list: [getItem()]
 })
 const data = page.data
 
@@ -26,9 +26,7 @@ page.onLoad = async function(option){
 
 page.addItem = function(){
   console.log('addItem')
-  this.data.list.push({
-    name: ''
-  })
+  this.data.list.push(getItem())
   this.updateData('list')
 }
 
@@ -44,6 +42,12 @@ page.nav2input = function(e){
       this.updateData('list')
     }
   })
+}
+
+function getItem(){
+  return {
+    name: ''
+  }
 }
 
 Page(page)
