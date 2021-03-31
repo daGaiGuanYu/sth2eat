@@ -71,7 +71,7 @@ page.submit = async function(){
     onListWrite(id)
   } else {
     const res = await model.create(data)
-    onListWrite(res.id)
+    onListWrite(res._id)
   }
   
   wx.navigateBack()

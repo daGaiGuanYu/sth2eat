@@ -30,6 +30,7 @@ const getUserRecord = exports.getUserRecord = async function() {
 }
 
 exports.setCurrentList = async function(listId, dontEmit){
+  console.log('设置新饭单', listId)
   const user = await model.findOne()
   await model.updateById(user._id, {
     currentListId: listId,

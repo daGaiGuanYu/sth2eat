@@ -7,4 +7,4 @@
   </view>
 </view>
 
-<view class="new-list iconfont gfadd"></view>
+<navigator url="/page/form/index" class="new-list iconfont gfadd" hover-class="none"></navigator>
