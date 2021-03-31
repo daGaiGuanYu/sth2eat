@@ -1,4 +1,5 @@
 @import './style/form-full-width.wxss';
+@import './style/iconfont.wxss';
 
 page {
   min-height: 100vh;
