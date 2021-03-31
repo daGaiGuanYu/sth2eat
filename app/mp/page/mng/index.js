@@ -33,7 +33,7 @@ page.onTapItem = function(e){
 }
 
 page.loadData = async function(){
-  const userinfo = await app.getUserRecord()
+  const userinfo = await app.getUserOpenidP()
   this.setData({
     list: await model.find({
       _openid: userinfo._openid

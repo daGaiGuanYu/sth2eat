@@ -4,7 +4,7 @@ const model = new Model('user')
 const toast = require('../common/toast')
 const appEvtMng = require('../common/evt-mng')
 
-const getUserRecord = exports.getUserRecord = async function() {
+const getUserOpenid = exports.getUserOpenid = async function() {
   const userList = await model.find()
   if(userList.length >1)
     throw '有这么些我？'
@@ -17,7 +17,7 @@ const getUserRecord = exports.getUserRecord = async function() {
       currentListId: null,
       list: []
     })
-    return await getUserRecord()
+    return await getUserOpenid()
   }
 }
 

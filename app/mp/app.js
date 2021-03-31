@@ -3,11 +3,11 @@ const api = require('./api/index')
 
 const app = {}
 
-const userRecordP = api.user.getUserRecord()
+const userOpenidP = api.user.getUserOpenid()
   .then(record => {
     console.log('当前用户: ', record)
     return record
   })
-app.getUserRecord = () => userRecordP
+app.getUserOpenidP = () => userOpenidP
 
 App(app)
