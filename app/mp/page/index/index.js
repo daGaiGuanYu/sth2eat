@@ -20,7 +20,7 @@ page.onLoad = async function(option){
   else if(userRecord.currentListId)
     gfListId = userRecord.currentListId
   else
-    gfListId = 'b00064a76062ec180c9b32c8349b64de'
+    gfListId = 'b00064a760643e850cbbea827c3307ee'
   
   await this.loadData(gfListId)
   this.reset() // 异步，但不等待（时间太长）
@@ -62,7 +62,7 @@ function __reset(){
   const list = this.data.list
   const tarIndex = Math.floor(Math.random() * list.length)
   const tar = list[tarIndex]
-  return gfTimeout.haha(200, [
+  return gfTimeout.haha(2000, [
     () => {
       this.showAnswer(3)
     },

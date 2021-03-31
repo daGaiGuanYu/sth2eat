@@ -1,5 +1,6 @@
 const { GFPage, showActionSheet, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
+const api = require('../../api/user')
 
 const page = new GFPage()
 const app = getApp()
@@ -17,19 +18,9 @@ page.onTapItem = function(e){
       nav2('/page/form/index?id=' + id)
     }],
     ['删除', drop],
-    ['使用此饭单', use],
-    ['在此基础上新增', add]
+    ['拷贝', add],
+    ['使用此饭单', () => api.setCurrentList(id) ]
   ])
-
-  function drop(){
-    console.log('删除')
-  }
-  function use(){
-    console.log('use')
-  }
-  function add(){
-    console.log('add')
-  }
 }
 
 page.loadData = async function(){

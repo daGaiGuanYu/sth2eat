@@ -36,7 +36,7 @@ exports.setCurrentList = async function(listId, dontEmit){
     currentListId: listId,
     list: Model._.unshift([listId])
   })
-  toast('yes，新饭单')
+  toast('yes！新饭单')
   if(!dontEmit)
     appEvtMng.emitMyListChange(listId)
 }
