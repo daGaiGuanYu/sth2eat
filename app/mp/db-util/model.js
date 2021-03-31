@@ -9,7 +9,7 @@ module.exports = class {
     return (await this.collection.doc(id).get()).data
   }
 
-  async find(where){
+  async find(where = {}){
     return (await this.collection.where(where).get()).data
   }
   async findOne(where){

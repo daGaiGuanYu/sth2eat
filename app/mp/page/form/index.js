@@ -2,7 +2,10 @@ const { GFPage, setPageTitle, nav2, toast } = require('../../common/index')
 const Model = require('../../db-util/model')
 const checkList = require('../../db-util/check-list')
 
+const appEvtMng = require('../../common/evt-mng')
 const model = new Model('list')
+const userModel = new Model('user')
+const api = require('../../api/user')
 const page = new GFPage({
   name: '',
   list: [getItem()]
@@ -59,12 +62,18 @@ page.submit = async function(){
     else
       return toast.error('有个饭名没填？')
   }
+
   const { name, list } = this.data
   const data = { name, list }
-  if(this.data.id)
-    await model.updateById(this.data.id, data)
-  else
-    await model.create(data)
+  const id = this.data.id
+  if(id) {
+    await model.updateById(id, data)
+    onListWrite(id)
+  } else {
+    const res = await model.create(data)
+    onListWrite(res.id)
+  }
+  
   wx.navigateBack()
 }
 
@@ -72,6 +81,14 @@ function getItem(){
   return {
     name: ''
   }
+}
+
+async function onListWrite(id){
+  const userRecord = await userModel.findOne()
+  if(userRecord.currentListId == id)
+    appEvtMng.emitMyListChange(id)
+  else if(!userRecord.currentListId)
+    api.setCurrentList(userRecord.currentListId)
 }
 
 Page(page)

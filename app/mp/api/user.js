@@ -16,3 +16,7 @@ const getUserRecord = exports.getUserRecord = async function() {
     return await getUserRecord()
   }
 }
+
+exports.setCurrentList = async function(id){
+
+}

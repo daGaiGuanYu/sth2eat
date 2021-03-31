@@ -5,28 +5,22 @@ const page = new GFPage()
 const app = getApp()
 const model = new Model('list')
 
-page.onLoad = async function(){
-  console.log('onLoad')
-  const userinfo = await app.getUserRecord()
-  this.setData({
-    list: await model.find({
-      _openid: userinfo._openid
-    })
-  })
+page.onShow = function(){
+  console.log('onShow')
+  this.loadData()
 }
 
 page.onTapItem = function(e){
   const id = e.currentTarget.dataset.id
   showActionSheet([
-    ['更新', update],
+    ['更新', () => {
+      nav2('/page/form/index?id=' + id)
+    }],
     ['删除', drop],
     ['使用此饭单', use],
     ['在此基础上新增', add]
   ])
 
-  function update(){
-    nav2('/page/form/index?id=' + id)
-  }
   function drop(){
     console.log('删除')
   }
@@ -36,6 +30,15 @@ page.onTapItem = function(e){
   function add(){
     console.log('add')
   }
+}
+
+page.loadData = async function(){
+  const userinfo = await app.getUserRecord()
+  this.setData({
+    list: await model.find({
+      _openid: userinfo._openid
+    })
+  })
 }
 
 Page(page)
