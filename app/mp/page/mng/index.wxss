@@ -1,3 +1,8 @@
+.no-list-tip {
+  margin-top: 40%;
+  color: #ccc;
+  text-align: center;
+}
 .new-list {
   width: 3.8rem;
   line-height: 3.8rem;

@@ -7,4 +7,6 @@
   </view>
 </view>
 
+<view wx:if="{{list.length == 0}}" class="no-list-tip">连个饭单都没有，也敢自称干饭人?</view>
+
 <navigator url="/page/form/index" class="new-list iconfont gfadd" hover-class="none"></navigator>
