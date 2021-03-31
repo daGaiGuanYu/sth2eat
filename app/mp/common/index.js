@@ -5,5 +5,6 @@ module.exports = {
   toast: require('./toast'),
   wait: require('./wait'),
   gfTimeout: require('./gf-timeout'),
+  Q: require('./q'),
   showActionSheet: require('./action-sheet')
 }

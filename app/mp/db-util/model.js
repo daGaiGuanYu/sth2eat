@@ -12,6 +12,12 @@ class Model {
   async find(where = {}){
     return (await this.collection.where(where).get()).data
   }
+
+  findNotDeleted(where = {}){
+    where.deletedAt = null
+    return this.find(where)
+  }
+
   async findOne(where){
     return (await this.find(where))[0]
   }
