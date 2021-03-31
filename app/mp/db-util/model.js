@@ -1,6 +1,6 @@
 const db = wx.cloud.database()
 
-module.exports = class {
+class Model {
   constructor(name){
     this.collection = db.collection(name)
   }
@@ -27,3 +27,7 @@ module.exports = class {
     return this.collection.doc(id).update({ data })
   }
 }
+
+Model._ = db.command
+
+module.exports = Model

@@ -88,7 +88,7 @@ async function onListWrite(id){
   if(userRecord.currentListId == id)
     appEvtMng.emitMyListChange(id)
   else if(!userRecord.currentListId)
-    api.setCurrentList(userRecord.currentListId)
+    api.setCurrentList(id)
 }
 
 Page(page)

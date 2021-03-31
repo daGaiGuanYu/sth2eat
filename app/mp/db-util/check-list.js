@@ -1,5 +1,3 @@
-const toast = require('../common/toast')
-
 module.exports = function(data){
   if(!data.name)
     return -1

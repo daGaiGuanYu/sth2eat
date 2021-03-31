@@ -17,8 +17,8 @@ function EvtMng(){
 // 全局事件管理
 const __mng = EvtMng()
 const appEvtMng = { // 凡需要的事件，均注册在这里（就不会乱注册了）
-  onMyListChange: (h) => __mng.on('myListChange', h),
-  emitMyListChange: (e) => __mng.emit('myListChange', e)
+  onMyListChange: h => __mng.on('myListChange', h),
+  emitMyListChange: e => __mng.emit('myListChange', e)
 }
 appEvtMng.EvtMng = EvtMng
 

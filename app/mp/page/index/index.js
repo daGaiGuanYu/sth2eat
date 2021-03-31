@@ -3,7 +3,6 @@ const Model = require('../../db-util/model')
 
 const app = getApp()
 const appEvtMng = require('../../common/evt-mng')
-const AppData = require('../../common/app-data')
 const userModel = new Model('user')
 const gfListModel = new Model('list')
 const page = new GFPage()
@@ -12,7 +11,10 @@ const knife = {}
 page.onLoad = async function(option){
   console.log('onLoad', option)
   knife.loadPromise = wait()
-  appEvtMng.onMyListChange(this.loadData.bind(this))
+  appEvtMng.onMyListChange( listId => {
+    console.log('首页：更新饭单！')
+    this.loadData(listId)
+  })
 
   let gfListId = option.gfListId
   const userRecord = await app.getUserRecord()
@@ -35,12 +37,6 @@ page.loadData = async function(listId){
   this.setData({
     name, list
   })
-}
-
-page.onShow = async function(){
-  console.log('onShow')
-  await knife.loadPromise
-  const newGFListId = AppData.getNewGFListId()
 }
 
 let resetting = false
@@ -68,9 +64,10 @@ page.toMenu = function(){
 
 function __reset(){
   console.log('__reset')
-  const tarIndex = Math.floor(Math.random() * 4)
-  const tar = this.data.list[tarIndex]
-  return gfTimeout.haha(2000, [
+  const list = this.data.list
+  const tarIndex = Math.floor(Math.random() * list.length)
+  const tar = list[tarIndex]
+  return gfTimeout.haha(200, [
     () => {
       this.showAnswer(3)
     },

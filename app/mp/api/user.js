@@ -1,8 +1,11 @@
-const model = wx.cloud.database().collection('user')
+const Model = require('../db-util/model')
+
+const model = new Model('user')
 const toast = require('../common/toast')
+const appEvtMng = require('../common/evt-mng')
 
 const getUserRecord = exports.getUserRecord = async function() {
-  const userList = (await model.get()).data
+  const userList = await model.find()
   if(userList.length >1)
     throw '有这么些我？'
   else if(userList.length == 1)
@@ -10,13 +13,20 @@ const getUserRecord = exports.getUserRecord = async function() {
   else{
     console.log('新用户')
     toast('你好干饭人！长按屏幕进入菜单')
-    await model.add({
-      data: {}
+    await model.create({
+      currentListId: null,
+      list: []
     })
     return await getUserRecord()
   }
 }
 
-exports.setCurrentList = async function(id){
-
+exports.setCurrentList = async function(listId){
+  const user = await model.findOne()
+  await model.updateById(user._id, {
+    currentListId: listId,
+    list: Model._.unshift([listId])
+  })
+  toast('yes，新饭单')
+  appEvtMng.emitMyListChange(listId)
 }
