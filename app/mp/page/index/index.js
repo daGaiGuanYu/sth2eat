@@ -1,38 +1,33 @@
 const { GFPage, toast, gfTimeout, wait, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
 
-const app = getApp()
+const userApi = require('../../api/user')
 const appEvtMng = require('../../common/evt-mng')
-const userModel = new Model('user')
 const gfListModel = new Model('list')
 const page = new GFPage()
-const knife = {}
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
-  knife.loadPromise = wait()
   appEvtMng.onMyListChange( listId => {
     console.log('首页：更新饭单！')
     this.loadData(listId)
   })
 
   let gfListId = option.gfListId
-  const userRecord = await app.getUserRecord()
+  const userRecord = await userApi.getUserRecord()
   if(gfListId)
-    await userModel.updateById(userRecord._id, {
-      gfListId
-    })
-  else if(userRecord.gfListId)
-    gfListId = userRecord.gfListId
+    await userApi.setCurrentList(gfListId, true)
+  else if(userRecord.currentListId)
+    gfListId = userRecord.currentListId
   else
     gfListId = 'b00064a76062ec180c9b32c8349b64de'
   
   await this.loadData(gfListId)
   this.reset() // 异步，但不等待（时间太长）
-  knife.loadPromise.resolve()
 }
 
 page.loadData = async function(listId){
+  console.log('首页 loadData')
   const { name, list } = await gfListModel.findById(listId)
   this.setData({
     name, list
