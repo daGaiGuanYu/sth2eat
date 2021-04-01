@@ -19,7 +19,7 @@ page.onTapItem = function(e){
     }],
     ['删除', drop],
     ['拷贝', () => {
-      // nav2('/page/form/index?copyId=' + id)
+      nav2('/page/form/index?copyId=' + id)
     }],
     ['设为当前饭单', () => api.setCurrentList(id) ]
   ])

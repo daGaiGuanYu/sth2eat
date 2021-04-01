@@ -1,4 +1,4 @@
-const { GFPage, showActionSheet } = require('../../common/index')
+const { GFPage, showActionSheet, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
 const userApi = require('../../api/user')
 
@@ -14,9 +14,12 @@ page.onLoad = async function(){
 }
 
 page.onTapItem = function(e){
+  const id = e.currentTarget.dataset.id
   showActionSheet([
     ['详情', () => {}],
-    ['拷贝', () => {}],
+    ['拷贝', () => {
+      nav2('/page/form/index?copyId=' + id)
+    }],
     ['设为当前饭单', () => {}]
   ])
 }
