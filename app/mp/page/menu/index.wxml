@@ -11,9 +11,9 @@
   </view>
 
   <view class="row-group">
-    <view class="row label">
+    <navigator url="/page/about/index" class="row label" hover-class="none">
       <text>关于</text>
       <text class="arrow">></text>
-    </view>
+    </navigator>
   </view>
 </view>

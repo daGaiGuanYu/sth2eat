@@ -1,0 +1,8 @@
+<view>本项目为开源项目</view>
+<view>所有源码均可在</view>
+<view class="link" bindtap="copy">https://github.com/daGaiGuanYu/sth2eat</view>
+<view>查看或下载</view>
+<view>欢迎提出建议与批评</view>
+
+<view>-</view>
+<view>372301467@qq.com</view>

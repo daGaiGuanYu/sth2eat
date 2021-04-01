@@ -5,6 +5,7 @@
     "page/form/input/index",
     "page/menu/index",
     "page/mng/index",
+    "page/about/index",
     "page/history/index"
   ],
   "window": {
