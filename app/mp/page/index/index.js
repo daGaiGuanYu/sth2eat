@@ -17,9 +17,10 @@ page.onLoad = async function(option){
 
   let gfListId = option.gfListId
   const userRecord = await userApi.getUserRecord()
-  if(gfListId)
-    await userApi.setCurrentList(gfListId, true)
-  else if(userRecord.currentListId)
+  if(gfListId) {
+    if(userRecord.currentListId != gfListId)
+      await userApi.setCurrentList(gfListId, true)
+  } else if(userRecord.currentListId)
     gfListId = userRecord.currentListId
   else
     gfListId = 'b00064a760643e850cbbea827c3307ee'
