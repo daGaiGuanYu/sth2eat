@@ -10,7 +10,8 @@ page.onLoad = async function(option){
   console.log('onLoad', option)
   appEvtMng.onMyListChange( listId => {
     console.log('首页：更新饭单！')
-    this.loadData(listId)
+    this.data.gfListId = listId
+    this.loadData()
   })
 
   let gfListId = option.gfListId
@@ -21,14 +22,15 @@ page.onLoad = async function(option){
     gfListId = userRecord.currentListId
   else
     gfListId = 'b00064a760643e850cbbea827c3307ee'
-  
-  await this.loadData(gfListId)
+  this.data.gfListId = gfListId
+
+  await this.loadData()
   this.reset() // 异步，但不等待（时间太长）
 }
 
-page.loadData = async function(listId){
+page.loadData = async function(){
   console.log('首页 loadData')
-  const { name, list } = await gfListModel.findById(listId)
+  const { name, list } = await gfListModel.findById(this.data.gfListId)
   this.setData({
     name, list
   })
@@ -55,6 +57,14 @@ page.showAnswer = function(answer){
 
 page.toMenu = function(){
   nav2('/page/menu/index')
+}
+
+page.onShareAppMessage = function(){
+  return {
+    title: this.data.name,
+    path: '/page/index/index?gfListId=' + this.data.gfListId,
+    imageUrl: '/asset/fan.png'
+  }
 }
 
 function __reset(){
