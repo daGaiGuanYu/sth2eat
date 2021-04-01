@@ -6,3 +6,24 @@
   font-size: 3rem;
   font-weight: bold;
 }
+
+@keyframes tip {
+  90% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.tip {
+  color: #ccc;
+  position: fixed;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  animation: tip 6s forwards;
+}

@@ -1,1 +1,2 @@
 <view class="answer" bindtap="reset" bindlongpress="toMenu">{{answer}}</view>
+<view class="tip" wx:if="{{tip}}">{{tip}}</view>

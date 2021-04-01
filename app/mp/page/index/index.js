@@ -1,5 +1,6 @@
-const { GFPage, toast, gfTimeout, wait, nav2 } = require('../../common/index')
+const { GFPage, toast, gfTimeout, nav2 } = require('../../common/index')
 const Model = require('../../db-util/model')
+const setTip = require('./tip')
 
 const userApi = require('../../api/user')
 const appEvtMng = require('../../common/evt-mng')
@@ -30,6 +31,7 @@ page.onLoad = async function(option){
 
 page.loadData = async function(){
   console.log('首页 loadData')
+  setTip(this)
   const { name, list } = await gfListModel.findById(this.data.gfListId)
   this.setData({
     name, list
