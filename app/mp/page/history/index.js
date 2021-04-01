@@ -22,7 +22,7 @@ page.onTapItem = function(e){
     ['拷贝', () => {
       nav2('/page/form/index?copyId=' + id)
     }],
-    ['设为当前饭单', () => {}]
+    ['设为当前饭单', () => userApi.setCurrentList(id) ]
   ])
 }
 
