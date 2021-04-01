@@ -6,6 +6,7 @@
     "page/menu/index",
     "page/mng/index",
     "page/about/index",
+    "page/list-info/index",
     "page/history/index"
   ],
   "window": {

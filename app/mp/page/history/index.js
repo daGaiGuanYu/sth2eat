@@ -16,7 +16,9 @@ page.onLoad = async function(){
 page.onTapItem = function(e){
   const id = e.currentTarget.dataset.id
   showActionSheet([
-    ['详情', () => {}],
+    ['详情', () => {
+      nav2('/page/list-info/index?id=' + id)
+    }],
     ['拷贝', () => {
       nav2('/page/form/index?copyId=' + id)
     }],
