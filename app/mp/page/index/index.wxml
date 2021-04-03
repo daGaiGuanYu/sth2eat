@@ -1,2 +1,5 @@
+<page-meta>
+  <navigation-bar loading="{{resetting}}" />
+</page-meta>
 <view class="answer" bindtap="reset" bindlongpress="toMenu">{{answer}}</view>
 <view class="tip" wx:if="{{tip}}">{{tip}}</view>

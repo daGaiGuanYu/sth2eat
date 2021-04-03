@@ -20,4 +20,12 @@ gfTimeout.haha = function (interval, list){
   return gfTimeout(list)
 }
 
+gfTimeout.heihei = function (duration, times, job){
+  const interval = duration / times
+  const list = []
+  for(let i=0; i<times; i++)
+    list.push(job.bind(this, i))
+  return gfTimeout.haha(interval, list)
+}
+
 module.exports = gfTimeout

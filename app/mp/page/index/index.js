@@ -1,4 +1,5 @@
 const { GFPage, toast, gfTimeout, nav2 } = require('../../common/index')
+const { getRandomItem } = require('./util')
 const Model = require('../../db-util/model')
 const setTip = require('./tip')
 
@@ -6,6 +7,7 @@ const userApi = require('../../api/user')
 const appEvtMng = require('../../common/evt-mng')
 const gfListModel = new Model('list')
 const page = new GFPage()
+const data = page.data
 
 page.onLoad = async function(option){
   console.log('onLoad', option)
@@ -39,21 +41,25 @@ page.loadData = async function(){
   })
 }
 
-let resetting = false
+data.resetting = false
 page.reset = async function(){
   console.log('reset')
-  if(resetting){
+  const data = this.data
+  if(data.resetting){
     toast('急？')
     return
   }
 
-  resetting = true
+  this.setData({
+    resetting: true
+  })
   await __reset.call(this)
-  resetting = false
+  this.setData({
+    resetting: false
+  })
 }
 
 page.showAnswer = function(answer){
-  console.log('showAnswer')
   if(!answer) throw 'answer 不能为空'
   this.setData({ answer })
 }
@@ -72,23 +78,9 @@ page.onShareAppMessage = function(){
 
 function __reset(){
   console.log('__reset')
-  const list = this.data.list
-  const tarIndex = Math.floor(Math.random() * list.length)
-  const tar = list[tarIndex]
-  return gfTimeout.haha(2000, [
-    () => {
-      this.showAnswer(3)
-    },
-    () => {
-      this.showAnswer(2)
-    },
-    () => {
-      this.showAnswer(1)
-    },
-    () => {
-      this.showAnswer(tar.name)
-    }
-  ])
+  return gfTimeout.heihei(5000, 50, () =>
+    this.showAnswer(getRandomItem(this.data.list).name)
+  )
 }
 
 Page(page)
