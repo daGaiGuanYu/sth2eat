@@ -1,6 +1,6 @@
 <view class="full-width">
   <view class="row-group">
-    <view class="row label" wx:for="{{list}}" wx:key="index" data-id="{{item._id}}" bindtap="onTapItem">
+    <view class="row label" wx:for="{{list}}" wx:key="index" data-id="{{item._id}}" data-index="{{index}}" bindtap="onTapItem">
       <text>{{item.name}}</text>
       <text class="arrow">></text>
     </view>

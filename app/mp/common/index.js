@@ -6,5 +6,9 @@ module.exports = {
   wait: require('./wait'),
   gfTimeout: require('./gf-timeout'),
   Q: require('./q'),
+  showLoading: title => wx.showLoading({
+    title,
+    mask: true
+  }),
   showActionSheet: require('./action-sheet')
 }

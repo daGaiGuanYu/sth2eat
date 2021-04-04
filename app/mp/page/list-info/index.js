@@ -1,5 +1,6 @@
 const Model = require('../../db-util/model')
-const { GFPage, setPageTitle } = require('../../common/index')
+const { GFPage, setPageTitle, nav2 } = require('../../common/index')
+const userApi = require('../../api/user')
 
 const model = new Model('list')
 const page = new GFPage()
@@ -15,6 +16,14 @@ page.onShow = async function(){
   this.setData({
     list: record.list
   })
+}
+
+page.use = function(){
+  userApi.setCurrentList(this.data.id)
+}
+
+page.copy = function(){
+  nav2('/page/form/index?copyId=' + this.data.id)
 }
 
 Page(page)
