@@ -4,8 +4,15 @@
       <text>我的饭单</text>
       <text class="arrow">></text>
     </navigator>
+  </view>
+  
+  <view class="row-group">
+    <navigator url="/page/star/index" class="row label" hover-class="none">
+      <text>收藏</text>
+      <text class="arrow">></text>
+    </navigator>
     <navigator url="/page/history/index" class="row label" hover-class="none">
-      <text>历史饭单</text>
+      <text>历史</text>
       <text class="arrow">></text>
     </navigator>
   </view>

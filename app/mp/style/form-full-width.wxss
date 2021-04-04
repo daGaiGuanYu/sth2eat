@@ -14,6 +14,12 @@ page {
   background: #fff;
 }
 
+.under-group {
+  color: #aaa;
+  margin: .6rem 1rem 0.3rem;
+  font-size: .8rem;
+}
+
 .full-width .row {
   padding: var(--margin) 0;
 }
