@@ -1,6 +1,10 @@
+page {
+  display: flex;
+  flex-direction: column;
+}
 .answer {
   width: 100vw;
-  height: 100vh;
+  flex: 1;
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
@@ -23,10 +27,9 @@
 }
 .tip {
   color: #ccc;
-  position: fixed;
-  bottom: 10%;
-  left: 0;
-  right: 0;
+  width: 100%;
+  bottom: 3%;
+  bottom: env(safe-area-inset-bottom);
   text-align: center;
   animation: tip 6s forwards;
 }

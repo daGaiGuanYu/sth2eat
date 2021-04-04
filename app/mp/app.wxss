@@ -1,7 +1,9 @@
+@import './style/reset.wxss';
 @import './style/form-full-width.wxss';
 @import './style/iconfont.wxss';
 
 page {
   min-height: 100vh;
   background-color: #f6f6f6;
+  padding-bottom: env(safe-area-inset-bottom);
 }
