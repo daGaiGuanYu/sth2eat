@@ -1,7 +1,7 @@
 <view class="full-width">
   <view class="row-group">
     <navigator url="/page/mng/index" class="row label" hover-class="none">
-      <text>我的饭单</text>
+      <text>我的</text>
       <text class="arrow">></text>
     </navigator>
   </view>
