@@ -14,6 +14,7 @@ page.onShow = async function(){
   const record = await model.findById(id)
   setPageTitle(record.name)
   this.setData({
+    name: record.name,
     list: record.list
   })
 }
@@ -24,6 +25,15 @@ page.use = function(){
 
 page.copy = function(){
   nav2('/page/form/index?copyId=' + this.data.id)
+}
+
+page.onShareAppMessage = function(){
+  const { name, id } = this.data
+  return {
+    title: name,
+    path: '/page/list-info/index?id=' + id,
+    imageUrl: '/asset/fan.png'
+  }
 }
 
 Page(page)

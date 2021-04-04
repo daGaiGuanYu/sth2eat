@@ -8,5 +8,5 @@
 
   <button bindtap="use">使 用</button>
   <button bindtap="copy">拷 贝</button>
-  <button type="primary">分 享</button>
+  <button type="primary" open-type="share">分 享</button>
 </view>
