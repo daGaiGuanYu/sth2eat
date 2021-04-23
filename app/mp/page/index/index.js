@@ -1,4 +1,5 @@
-const { GFPage, toast, gfTimeout, nav2 } = require('../../common/index')
+const ccz = require('ccz')
+const { GFPage, toast, nav2 } = require('../../common/index')
 const { getRandomItem } = require('./util')
 const Model = require('../../db-util/model')
 const setTip = require('./tip')
@@ -78,7 +79,7 @@ page.onShareAppMessage = function(){
 
 function __reset(){
   console.log('__reset')
-  return gfTimeout.heihei(5000, 50, () =>
+  return ccz.withoutIntervalP(5000, 50, () =>
     this.showAnswer(getRandomItem(this.data.list).name)
   )
 }

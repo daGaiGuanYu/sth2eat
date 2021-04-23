@@ -4,7 +4,6 @@ module.exports = {
   GFPage: require('./page'),
   toast: require('./toast'),
   wait: require('./wait'),
-  gfTimeout: require('./gf-timeout'),
   Q: require('./q'),
   showLoading: title => wx.showLoading({
     title,
